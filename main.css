@@ -1,0 +1,32 @@
+body{
+    background-color: lightblue;
+    color: maroon;
+    font-family: Arial;
+    margin: 0px
+}
+
+main{
+    background-color: lightblue;
+    color: maroon;
+    font-family: Arial;
+    margin: 10px
+}
+
+footer{
+    background-color: lightsalmon;
+    color:darkred;
+    font-family: Arial;
+    margin: 0px
+}
+
+header{
+    background-color: lightsalmon;
+    color:darkred;
+    font-family: Arial;
+    margin: 0px
+}
+
+a:link, a:visited {
+    text-decoration:none;
+    color:maroon;
+ }
