@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кобзева Лидия Викторовна. Лабораторная 4</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-16x16.png">
+        <style>
+            .jpg{
+                width: 50%;
+                margin-left: 50px;
+                margin-right: 30px;
+                margin-bottom: 0px;
+            }
+
+            .dialog{
+                background-color: whitesmoke;
+                border-radius: 80px;
+                line-height: 70px;
+                text-align: center;
+                position: relative; /*относительное позиционирование */
+                font-size: 20px;
+                z-index: 3;
+                box-shadow: 3px 3px 5px rgb(237, 91, 91);
+                transition: opacity 0.5s ease-in-out; /* Плавное появление */
+                opacity: 0; /* Изначально скрыт */
+            }
+
+            .circle{
+                background-color: whitesmoke;
+                border-radius: 100px; 
+                width: 30px;
+                height: 30px;
+                line-height: 1000px; 
+                text-align: center;
+                position: relative;
+                font-size: 20px;
+                z-index: 1;
+                box-shadow: 3px 3px 5px rgb(237, 91, 91);
+                transition: opacity 0.5s ease-in-out; 
+                opacity: 0; 
+            }
+
+            .frame {
+                background-color: whitesmoke;
+                color: maroon;
+                border-radius: 100px; 
+                width: 35px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                position: relative;
+                font-size: 20px;
+                box-shadow: 3px 3px 5px rgb(237, 91, 91);
+            }
+
+                /* При наведении на блок .strelka */
+            .frame:hover + .dialog, 
+            .frame:hover + .dialog + .circle {
+                opacity: 1; /* Показ блоков */
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 2
+            <hr>
+        </header>
+
+        <main>
+            <img src="1.jpg" class="jpg">
+            <div class="frame" style="left: 320px;top: -250px;"><span>...</span></div>
+            
+            <div class="dialog" style="left: 400px;top: -350px; width: 350px;height: auto;">
+                -Все уже..кончилось?</div>
+            <div class="circle" style="left: 360px;top: -380px;"></div>
+
+            
+            <img src="2.jpg" class="jpg">
+            <div class="frame" style="left: 320px;top: -230px;"><span>...</span></div>
+            
+            <div class="dialog" style="left: 400px;top: -330px;width: 200px;
+            height: auto;">-"Окрашено".</div>
+            <div class="circle" style="left: 360px;top: -350px;"></div>
+
+            
+            <img src="3.jpg" class="jpg">
+            <div class="frame" style="left: 570px;top: -250px;"><span>...</span></div>
+
+            <div class="dialog" style="left: 240px;top: -380px;width: 380px;
+            height: auto;">-Красивая была скамеечка.</div>
+            <div class="circle" style="left: 620px;top: -370px;"></div>
+
+
+            <img src="4.jpg" class="jpg">
+            <div class="frame" style="left: 300px;top: -250px;"><span>...</span></div>
+
+            <div class="dialog" style="left: 280px;top: -400px;width: 500px;
+            height: auto;">-Крош, Ёжик, ну вы же спасли меня &ndash; своего друга.</div>
+            <div class="circle" style="left: 340px;top: -380px;"></div>
+
+
+            <img src="5.jpg" class="jpg">
+            <div class="frame" style="left: 430px;top: -230px;"><span>...</span></div>
+
+            <div class="dialog" style="left: 60px;top: -370px;width: 800px;
+            height: auto;">-Может я ошибаюсь, но я все же полезнее чем скамейка..даже такая красивая.</div>
+            <div class="circle" style="left: 460px;top: -360px;"></div>
+
+
+            <img src="6.jpg" class="jpg">
+            <div class="frame" style="left: 570px;top: -200px;"><span>...</span></div>
+
+            <div class="dialog" style="left: 100px;top: -340px;width: 730px;
+            height: auto;">-Ну так, Бараш, конечно, скамеек я могу сделать сколько угодно.</div>
+            <div class="circle" style="left: 610px;top: -330px;"></div>
+
+
+            <img src="7.jpg" class="jpg">
+            <div class="frame" style="left: 550px;top: -250px;"><span>...</span></div>
+
+            <div class="dialog" style="left: 100px;top: -400px;width: 500px;
+            height: auto;">-А ты у нас такой, понимаешь, один!</div>
+            <div class="circle" style="left: 600px;top: -390px;"></div>
+        </div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
+        </footer>
+    </body>
+</html>
