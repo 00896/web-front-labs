@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кобзева Лидия Викторовна. Лабораторная 4</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon-32x32.png">
+        <link rel="icon" href="favicon-16x16.png">
+        <style>
+            div{
+                width:300px;
+                line-height: 70px;
+                height: 70px;
+                text-align: center;
+                background-color: bisque;
+                border: 1px solid lightsalmon;
+                margin: 15px;
+                position: relative; 
+            }
+            .position-relative {
+                position: relative;
+                left: 150px;
+                top: -130px;
+                
+               
+            }
+            .stat{
+                z-index: 1;
+            }
+
+            .position-relative:hover {
+                z-index: 1;
+                transition: z-index 0.1s;
+            }
+
+            .position-absolute{
+                position: absolute;
+                left: 350px; 
+            }
+            
+            .position-absolute:hover{
+                width: 320px;
+                height: 80px;
+                background-color: lightsalmon;
+                color: rgb(41, 13, 13);
+                z-index: 1;
+                box-shadow: 2px 2px 15px rgb(207, 66, 66);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 2
+            <hr>
+        </header>
+
+        <main>
+            <div class="stat">static</div>
+            <div class="stat">static</div>
+            <div class="position-relative">relative</div>
+            <div>static</div>
+            <div>static</div>
+            <div class="position-absolute">absolute</div>
+            <div>static</div>
+            <div>static</div>
+            <div>static</div>
+            <div>static</div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
+        </footer>
+    </body>
+</html>
