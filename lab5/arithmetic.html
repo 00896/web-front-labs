@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кобзева Лидия Викторовна. Лабораторная 5</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-16x16.png">
+        <script>
+            function showSum() {
+                let num1 = 5154;
+                let num2 = 7891;
+                let result = num1 + num2;
+                alert('Сумма ' + num1 + ' и ' + num2 + ' равна ' + result);
+            }
+        </script>
+        <style>
+            .message{
+                margin: 20px;
+                border: 3px dotted;
+                border-radius: 100px;
+                padding: 10px;
+                width: 250px; 
+                height: 30px;
+                display: inline-block;
+                text-align: center;
+                background-color: rgb(249, 251, 254);
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 2
+            <hr>
+        </header>
+
+        <main>
+            <div class="message" onclick="showSum()">Сколько будет 5154+7891?</div>
+            <div class="message">Узнать, кто автор страницы</div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
+        </footer>
+    </body>
+</html>
