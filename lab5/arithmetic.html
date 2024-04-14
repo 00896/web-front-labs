@@ -15,6 +15,15 @@
                 let result = num1 + num2;
                 alert('Сумма ' + num1 + ' и ' + num2 + ' равна ' + result);
             }
+
+            function showAuthor() {
+                let author = 'Автор страницы: \nКобзева Лидия Викторовна';
+                alert(author);
+            }
+
+            function showGreeting() {
+            alert('Приветствую вас на моей странице!\nБог знал, я был бы слишком силен, если бы мог 15 мин удерживать внимание на умственной работе');
+            }
         </script>
         <style>
             .message{
@@ -29,20 +38,27 @@
                 background-color: rgb(249, 251, 254);
                 cursor: pointer;
             }
+
+            header{
+                cursor: pointer;
+            }
+            footer{
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
-        <header>
-            НГТУ, ФБ, Лабораторная работа 2
+        <header onclick="showAuthor()">
+            НГТУ, ФБ, Лабораторная работа 5
             <hr>
         </header>
 
         <main>
             <div class="message" onclick="showSum()">Сколько будет 5154+7891?</div>
-            <div class="message">Узнать, кто автор страницы</div>
+            <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
         </main>
 
-        <footer>
+        <footer ondblclick="showGreeting()">
             <hr>
             &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
         </footer>
