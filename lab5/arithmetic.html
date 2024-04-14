@@ -18,6 +18,39 @@
                 alert('Сумма ' + num1 + ' и ' + num2 + ' равна ' + result);
             }
 
+            function showSub() {
+                let inputA = document.getElementById ('numberA')
+                let inputB = document.getElementById ('numberB')
+                let num1 = parseInt(inputA.value);
+                let num2 = parseInt(inputB.value);
+                let result = num1 - num2;
+                alert('Разность ' + num1 + ' и ' + num2 + ' равна ' + result);
+            }
+
+            function showMult() {
+                let inputA = document.getElementById ('numberA')
+                let inputB = document.getElementById ('numberB')
+                let num1 = parseInt(inputA.value);
+                let num2 = parseInt(inputB.value);
+                let result = num1 * num2;
+                alert('Произведение ' + num1 + ' и ' + num2 + ' равна ' + result);
+            }
+
+            function showDiv() {
+                let inputA = document.getElementById ('numberA')
+                let inputB = document.getElementById ('numberB')
+                let num1 = parseInt(inputA.value);
+                let num2 = parseInt(inputB.value);
+                let result = num1 / num2;
+                if (num2 == 0) {
+                    alert('На 0 делить нельзя');
+                } 
+                else {
+                    let result = num1 / num2;
+                    alert('Деление ' + num1 + ' на ' + num2 + ' равно ' + result);
+                }
+            }
+
             function showAuthor() {
                 let author = 'Автор страницы: \nКобзева Лидия Викторовна';
                 alert(author);
@@ -41,6 +74,12 @@
                 cursor: pointer;
             }
 
+            .message:hover {
+                color: red;
+                text-decoration: underline;
+                transition: 0.3s;
+            }
+
             header{
                 cursor: pointer;
             }
@@ -59,6 +98,9 @@
             <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
             <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
             <div class="message" onclick="showSum()">Найти сумму чисел</div>
+            <div class="message" onclick="showSub()">Найти разность чисел</div>
+            <div class="message" onclick="showMult()">Найти произведение чисел</div>
+            <div class="message" onclick="showDiv()">Найти деление чисел</div>
             <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
         </main>
 
