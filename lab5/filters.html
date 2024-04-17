@@ -14,6 +14,12 @@
                 document.getElementById('blurOutput').innerText = value;
                 document.getElementById('blurImage').style.filter = 'blur(' + value + ')';
             }
+
+            function sepia() {
+                let value = document.getElementById('sepiaValue').value + '%';
+                document.getElementById('sepiaOutput').innerText = value;
+                document.getElementById('sepiaImage').style.filter = 'sepia(' + value + ')';
+            }
         </script>
         <style>
             img {
@@ -33,7 +39,13 @@
                 <input type="range" min="0" max="20" value="0" onchange="blurImage()" id="blurValue">
                 <span id="blurOutput"></span>
             </div>
-            <div><img src="1.jpg" id="blurImage"></div>        
+            <div><img src="1.jpg" id="blurImage"></div>   
+            
+            <div> Фильтр сепия:
+                <input type="range" min="0" max="100" value="0" onchange="sepia()" id="sepiaValue">
+                <span id="sepiaOutput"></span>
+            </div>
+            <div><img src="2.jpg" id="sepiaImage"></div>
         </main>
 
         <footer>
