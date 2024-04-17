@@ -20,11 +20,17 @@
                 document.getElementById('sepiaOutput').innerText = value;
                 document.getElementById('sepiaImage').style.filter = 'sepia(' + value + ')';
             }
+
+            function hueRotate() {
+                let value = document.getElementById('hue-rotateValue').value + 'deg';
+                document.getElementById('hue-rotateOutput').innerText = value;
+                document.getElementById('hue-rotateImage').style.filter = 'hue-rotate(' + value + ')';
+            }
         </script>
         <style>
             img {
-                width: 700px;
-                height: 500px;
+                width: 600px;
+                height: 400px;
             }
         </style>
     </head>
@@ -46,6 +52,12 @@
                 <span id="sepiaOutput"></span>
             </div>
             <div><img src="2.jpg" id="sepiaImage"></div>
+
+            <div>Фильтр оттенков цвета:
+                <input type="range" min="0" max="360" value="0" onchange="hueRotate()" id="hue-rotateValue">
+                <span id="hue-rotateOutput"></span>
+            </div>
+            <div><img src="3.jpg" id="hue-rotateImage"></div>
         </main>
 
         <footer>
