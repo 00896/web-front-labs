@@ -38,6 +38,12 @@
                 document.getElementById('saturateOutput').innerText = value;
                 document.getElementById('saturateImage').style.filter = 'saturate(' + value + ')';
             }
+
+            function grayscale() {
+                let value = document.getElementById('grayscaleValue').value + '%';
+                document.getElementById('grayscaleOutput').innerText = value;
+                document.getElementById('grayscaleImage').style.filter = 'grayscale(' + value + ')';
+            }
         </script>
         <style>
             img {
@@ -83,6 +89,11 @@
             </div>
             <div><img src="5.jpg" id="saturateImage"></div>
 
+            <div> Фильтр оттенков серого:
+                <input type="range" min="0" max="100" value="0" onchange="grayscale()" id="grayscaleValue">
+                <span id="grayscaleOutput"></span>
+            </div>
+            <div><img src="6.jpg" id="grayscaleImage"></div>
         </main>
 
         <footer>
