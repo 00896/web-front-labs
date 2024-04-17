@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кобзева Лидия Викторовна. Лабораторная 5</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-16x16.png">
+        <script>
+             function hideCircle(circleId) {
+                let circle = document.getElementById(circleId);
+                circle.style.opacity = '0'; 
+                circle.style.width = '0'; 
+                circle.style.height = '0'; 
+                setTimeout(() => {circle.style.visibility = 'hidden'; }, 500); 
+                    /* Таймер обратного отсчета (в млсек), с помощью которого скрываем элемент, сохраняя его пространство */
+            }
+
+            function resetCircles() {
+                let circles = document.querySelectorAll('.circle');
+                circles.forEach(circle => {
+                    circle.style.opacity = '1';
+                    circle.style.width = ''; 
+                    circle.style.height = ''; 
+                    circle.style.visibility = 'visible';
+                });
+                /* Сбрасываем прозрачность, возвращаем ширину/высоту к изнач.знач., показываем элемент */
+            }
+        </script>
+        <style>
+            .circle{
+                border: 8px solid rgba(255, 230, 220, 0.56);
+                position: absolute; 
+                border-radius: 50%;
+                text-align: center;
+                line-height: 100px; /* центрирование содержимого */
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.5s ease; /* плавный переход для всех элементов для изменения размеров и прозрачности */
+            }
+
+            #circle1 {
+                width: 100px;
+                height: 100px;
+                background-color: #fba5fc;
+                left: 500px;
+                top: 100px;
+            }
+            
+            #circle2 {
+                width: 120px;
+                height: 120px;
+                background-color: #b0b0e0;
+                left: 400px;
+                top: 250px;
+            }
+            
+            #circle3 {
+                width: 80px;
+                height: 80px;
+                background-color: #d7ff71;
+                left: 330px;
+                top: 400px;
+            }
+
+            #circle4 {
+                width: 100px;
+                height: 100px;
+                background-color: #eaf692;
+                left: 600px;
+                top: 450px;
+            }
+
+            #circle5 {
+                width: 140px;
+                height: 140px;
+                background-color: #8cff4a;
+                left: 900px;
+                top: 400px;
+            }
+
+            #circle6 {
+                width: 90px;
+                height: 90px;
+                background-color: #fac8eb;
+                left: 600px;
+                top: 270px;
+            }
+            #circle7 {
+                width: 70px;
+                height: 70px;
+                background-color: #bdd6f7;
+                left: 900px;
+                top: 200px;
+            
+            }
+            #circle8 {
+                width: 130px;
+                height: 130px;
+                background-color: rgb(214, 112, 216);
+                left: 700px;
+                top: 100px;
+            }
+            #circle9 {
+                width: 100px;
+                height: 100px;
+                background-color: rgb(255, 98, 158);
+                left: 1000px;
+                top: 100px;
+            }
+            #circle10 {
+                width: 130px;
+                height: 130px;
+                background-color: #bbacee;
+                left: 1100px;
+                top: 300px;
+            }
+            #circle11 {
+                width: 100px;
+                height: 100px;
+                background-color: #77feab;
+                left: 740px;
+                top: 360px;
+            }
+            #circle12 {
+                width: 100px;
+                height: 100px;
+                background-color: #63fad4;
+                left: 250px;
+                top: 150px;
+            }
+            
+            #button{
+                background-color: rgba(0, 0, 0, 0);
+                color: maroon;
+                background-color: lightsalmon;
+                border: 1px solid maroon;
+                border-radius: 6px;
+                font-size: 16px;
+                margin: 20px;
+                padding: 10px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 5
+            <hr>
+        </header>
+
+        <main>
+            <div id="container">
+                <div id="circle1" class="circle" onclick="hideCircle('circle1')">1</div>
+                <div id="circle2" class="circle" onclick="hideCircle('circle2')">2</div>
+                <div id="circle3" class="circle" onclick="hideCircle('circle3')">3</div>
+                <div id="circle4" class="circle" onclick="hideCircle('circle4')">4</div>
+                <div id="circle5" class="circle" onclick="hideCircle('circle5')">5</div>
+                <div id="circle6" class="circle" onclick="hideCircle('circle6')">6</div>
+                <div id="circle7" class="circle" onclick="hideCircle('circle7')">7</div>
+                <div id="circle8" class="circle" onclick="hideCircle('circle8')">8</div>
+                <div id="circle9" class="circle" onclick="hideCircle('circle9')">9</div>
+                <div id="circle10" class="circle" onclick="hideCircle('circle10')">10</div>
+                <div id="circle11" class="circle" onclick="hideCircle('circle11')">11</div>
+                <div id="circle12" class="circle" onclick="hideCircle('circle12')">12</div>
+              
+            </div>
+            
+            <button id="button" onclick="resetCircles()">Сбросить</button>
+          
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
+        </footer>
+    </body>
+</html>
