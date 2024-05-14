@@ -20,6 +20,47 @@
                 text-align: center;
                 width: 700px; 
             }
+
+            .start{
+                color: maroon;
+                font-size: 16px;
+                background-color: rgb(253, 190, 165);
+                border: 2px solid rgb(253, 190, 165);
+                text-align: center;
+                width: 700px; 
+                cursor: pointer;
+            }
+
+            .center{
+                display: inline-block}
+                li{
+                text-align: left;
+            }
+
+            .ruleslist{
+                color: maroon;
+                background-color: rgb(253, 190, 165);
+                border: 2px solid maroon;
+                border-radius: 6px;
+                font-size: 16px;
+                margin: 15px auto;
+                padding: 10px;
+                text-align: center;
+                width: 725px; 
+                cursor: pointer;
+            }
+
+            #rules{
+                color: maroon;
+                background-color: rgb(255, 217, 215);
+                border: 2px solid maroon;
+                border-radius: 6px;
+                font-size: 16px;
+                margin: 15px auto;
+                padding: 10px;
+                text-align: center;
+                width: 700px; 
+            }
         </style>
         <script>
             let number;
@@ -77,6 +118,18 @@
                 return; // Попытку не засчитывать
                 }
             } 
+
+            function Rules() {
+                let rulesBlock = document.getElementById('rules');
+                let rulesButton = document.getElementById('rules-block').getElementsByTagName('button')[0];
+                if (rulesBlock.style.display === 'none') {
+                    rulesBlock.style.display = 'block';
+                    rulesButton.innerHTML = 'Скрыть правила игры';
+                } else {
+                    rulesBlock.style.display = 'none';
+                    rulesButton.innerHTML = 'Показать правила игры';
+                }
+            }
         </script>
     </head>
 
@@ -88,7 +141,7 @@
 
         <main>
             <div class="game">
-                <button onclick="startGame()">
+                <button onclick="startGame()" class="start">
                     Сыграть в игру
                 </button>
             </div>
@@ -113,6 +166,33 @@
                 </div>
                 <div>
                     <button onclick="again()">Сыграть еще раз</button>
+                </div>
+            </div>
+
+            <div id="rules-block" style="text-align: center;">
+                <button onclick="Rules()" class="ruleslist">Показать правила игры</button>
+                <div id="rules" style="display: none;">
+                    <h2>Правила игры:</h2>
+                    <ol class="center">
+                        <li>
+                            Задается случайное число от 1 до 100
+                        </li>
+                        <li>
+                            Необходимо угадать это число, вводя свои предположения в поле ввода
+                        </li>
+                        <li>
+                            Если ваше число больше загаданного, будет выведено сообщение "Вы ввели слишком большое число"
+                        </li>
+                        <li>
+                            Если ваше число меньше загаданного, будет выведено сообщение "Вы ввели слишком маленькое число"
+                        </li>
+                        <li>
+                            Игра завершается, если вы угадываете число. Вы сможете посмотреть кол-во попыток
+                        </li>
+                        <li>
+                            После завершения игры вы можете сыграть еще раз, нажав на одноименную кнопку 
+                        </li>
+                    </ol>
                 </div>
             </div>
         </main>
