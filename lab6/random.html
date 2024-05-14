@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кобзева Лидия Викторовна. Лабораторная 6</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-16x16.png">
+        <style>
+            .game{
+                color: maroon;
+                background-color: rgb(253, 190, 165);
+                border: 2px solid maroon;
+                border-radius: 6px;
+                font-size: 16px;
+                margin: 15px auto;
+                padding: 10px;
+                text-align: center;
+                width: 700px; 
+            }
+        </style>
+        <script>
+            let number;
+            let count = 0;
+
+            function startGame() {
+                number = Math.floor(Math.random() * 100) + 1;
+                //отбрасываем дробную часть и умножаем ранд.число на 100 (чтобы избавиться от диапазона 0<r<1)
+                let screens = document.getElementsByClassName('game');
+                screens[0].style.display = 'none';
+                screens[1].style.display = 'block';
+            }
+
+            function guess() {
+                count++;
+                let input = document.getElementById('user-number');
+                let userNumber = parseInt(input.value);
+                let message = document.getElementById('result');
+                // Проверка на пустое поле или не числовое значение
+                if (isNaN(userNumber) || userNumber < 1 || userNumber > 100)  {
+                    message.innerHTML = 'Введите число от 1 до 100!';
+                    return; // Прерываем выполнение функции, чтобы попытку не засчитывать
+                }
+
+                if (userNumber > number) {
+                    message.innerHTML = 'Вы ввели слишком большое число';
+                }
+                else if (userNumber < number) {
+                    message.innerHTML = 'Вы ввели слишком маленькое число';
+                }
+                else{
+                    let screens = document.getElementsByClassName('game');
+                    screens[1].style.display = 'none';
+                    screens[2].style.display = 'block';
+                    document.getElementById('number').innerHTML = number;
+                    document.getElementById('try-count').innerHTML = count;
+                }
+            }
+
+            function again(params) {
+                document.getElementsByClassName('game')[2].style.display = 'none';
+                document.getElementsByClassName('game')[1].style.display = 'block';
+                // Генерируем новое случайное число
+                number = Math.floor(Math.random() * 100) + 1;
+                // Обнуляем число попыток
+                count = 0;
+                // Очищаем блок "result"
+                document.getElementById('result').innerHTML = '';
+                // Очистить поле ввода пользователя
+                document.getElementById('user-number').value = '';
+                if (isNaN(userNumber) || userNumber < 1 || userNumber > 100)  {
+                document.getElementById('result').innerHTML = 'Введите число от 1 до 100!';
+                // Показать кнопку "Сыграть ещё раз"
+                document.getElementsByClassName('game')[0].style.display = 'block';
+                return; // Попытку не засчитывать
+                }
+            } 
+        </script>
+    </head>
+
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 6
+            <hr>
+        </header>
+
+        <main>
+            <div class="game">
+                <button onclick="startGame()">
+                    Сыграть в игру
+                </button>
+            </div>
+
+            <div class="game" style="display: none;">
+                <h1>Угадай число!</h1>
+                <div>
+                    Задумано число от 1 до 100. Угадайте, какое?<br>
+                    <input value="number" value="" min="1" max="100" id="user-number"><br>
+                    <button onclick="guess()">Угадать</button>
+                    <div id="result"></div>
+                </div>
+            </div>
+
+            <div class="game" style="display: none;">
+                <h1>Поздравляем, вы выиграли!</h1>
+                <div>
+                    Задуманное число: <span id="number"></span>
+                </div>
+                <div>
+                    Количество попыток: <span id="try-count"></span>
+                </div>
+                <div>
+                    <button onclick="again()">Сыграть еще раз</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
+        </footer>
+    </body>
+</html>
