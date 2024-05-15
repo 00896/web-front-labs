@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кобзева Лидия Викторовна. Лабораторная 6</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-16x16.png">
+        <style>
+            div{
+                text-align: center;
+                height: 500px;
+                width: 1000px;
+                position: relative;
+                left: 10px;
+                top: 10px;
+                border-radius: 10px;
+            }
+            table {
+                margin: 5px auto 0;
+            }
+            table, th, td {
+                border: 3px solid rgb(255, 184, 156);
+                border-collapse: collapse;
+                font-size: 25px;
+                color: maroon;
+                border-radius: 10px;
+            }
+            input{
+                background-color: rgb(237, 250, 255);
+                margin: 5px;
+                font-size: 25px;
+                border: solid 2px maroon;
+                width: 100px;
+                color: maroon;
+                border-radius: 10px;
+                }
+            button{
+                margin: 25px 25px 10px 25px;
+                background-color: rgb(235, 164, 164);
+                color: maroon;
+                font-size: 20px;
+                border: solid 3px maroon;
+                height: 50px;
+                width: 150px;
+                border-radius: 10px;
+                }
+
+            p{
+                font-size: 30px;
+                font-weight: bold;
+                color: maroon;
+            }
+        </style>
+        <script>
+            function calculateTotal() {
+                let balance = 1000;
+                document.getElementById('balance').value = balance;
+                let total = 0;
+                let errorMessage = '';
+                let negativeCount = 0; // Счетчик отрицательных товаров
+                
+                const prices = [350, 500, 499, 400, 620, 130, 720];
+
+                if (balance < 0) {
+                    errorMessage = 'Баланс не может быть отрицательным';
+                } 
+                else {
+                    for (let i = 1; i <= 7; i++) {
+                        let quantity = document.getElementById('quant' + i).value;
+
+                        if (quantity === '') {
+                            quantity = 0; // Принимаем пустые поля как нулевое количество
+                        } else {
+                            quantity = parseInt(quantity); // Преобразуем количество в целое число
+                        }
+
+                        if (quantity < 0) {
+                            errorMessage = 'Количество товара не может быть отрицательным';
+                            negativeCount++; // Увеличиваем счетчик отрицательных товаров
+                        }
+                        total += quantity * prices[i - 1];
+                    }
+
+                    if (negativeCount > 0 && negativeCount === total) {
+                        errorMessage = 'Выбраны отрицательные товары';
+                    }
+
+                    if (total === 0) {
+                        errorMessage = 'Выберите хотя бы один товар';
+                    }
+
+                    if (total > balance) {
+                        errorMessage = `Сумма товаров (${total} рублей) превышает Ваш баланс (${balance} рублей)`;
+                    }
+                }
+
+                if (errorMessage !== '') {
+                    document.getElementById('result').innerText = errorMessage;
+                } else {
+                    document.getElementById('result').innerText = `Сумма: ${total} рублей`;
+                }
+            }
+            function clearForm() {
+                document.getElementById("balance").value = "";
+                for (let i = 1; i <= 7; i++) {
+                    document.getElementById('quant' + i).value = "";
+                }
+                document.getElementById('result').innerText = "";
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 6
+            <hr>
+        </header>
+
+        <main>
+            <div>
+                <p>Мой баланс: <input type="number" id="balance">руб.</p>
+                
+                <table border="2" width="90%"> 
+                    <tr>
+                        <td><b>№</b></td>
+                        <td><b>Название</b></td>
+                        <td><b>Цена</b></td>
+                        <td><b>Количество</b></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Скетчбук</td>
+                        <td>350 руб</td>
+                        <td><input type="number" id="quant1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Акриловые краски</td>
+                        <td>500 руб</td>
+                        <td><input type="number" id="quant2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Холст грунтованный</td>
+                        <td>499 руб</td>
+                        <td><input type="number" id="quant3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Тушь</td>
+                        <td>400 руб</td>
+                        <td><input type="number" id="quant4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Маркеры</td>
+                        <td>620 руб</td>
+                        <td><input type="number" id="quant5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Кисть №8</td>
+                        <td>130 руб</td>
+                        <td><input type="number" id="quant6"></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Акварельные карандаши</td>
+                        <td>720 руб</td>
+                        <td><input type="number" id="quant7"></td>
+                    </tr>
+                </table>
+                
+                <button onclick="calculateTotal()">Рассчитать</button>
+                <button onclick="clearForm()">Очистить</button>
+                
+                <p id="result"></p>
+            </div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
+        </footer>
+    </body>
+</html>
