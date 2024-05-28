@@ -90,6 +90,27 @@
                     main.appendChild(newBlock);
                 }
             }
+
+            function addOpacityBlocks() {
+                let main = document.querySelector('main');
+                for (let i = 1; i <= 10; i++) {
+                    let newBlock = document.createElement('div');
+                    newBlock.style.background = 'rgb(182, 170, 251)';
+                    newBlock.style.height = '40px';
+                    newBlock.style.border = 'solid 3px mediumslateblue';
+                    newBlock.style.width = '120px'; 
+                    newBlock.style.textAlign = 'center';
+                    newBlock.style.color = 'mediumslateblue';
+                    newBlock.style.marginBottom = '10px';
+                    newBlock.style.marginTop = '10px';
+                    newBlock.style.borderRadius = '5px';
+                    newBlock.textContent = i;
+
+                    let opacityValue = i / 10;
+                    newBlock.style.opacity = opacityValue;
+                    main.appendChild(newBlock);
+                }
+            }
         </script>
         <style>
             button {
@@ -119,6 +140,8 @@
             <button onclick="add20_50()">20=>50</button>
 
             <button onclick="add10_80()">10=>-80</button>
+
+            <button onclick="addOpacityBlocks()">Opacity</button>
         </main>
         <footer>
             <hr>
