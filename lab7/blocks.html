@@ -64,6 +64,32 @@
                     main.appendChild(newBlock);
                 }
             }
+
+            function add10_80() {
+                let main = document.querySelector('main');
+                let diameter = 20;
+                let fontSize = 10;
+                let padding = 1;
+                let marginRight = 10;
+                let width = 100;
+                for (let i = 10; i >= -80; i -= 3) {
+                    let newBlock = document.createElement('div');
+                    newBlock.style.width = `${diameter}px`;
+                    newBlock.style.height = `${diameter}px`;
+                    newBlock.style.borderRadius = '50%';
+                    newBlock.style.background = 'rgba(137, 228, 224, 0.778)';
+                    newBlock.style.border = 'solid 1px rgba(32, 178, 171, 0.778)';
+                    newBlock.style.display = 'inline-block'; // отображение кругов в строку
+                    newBlock.style.marginRight = `${marginRight}px`;
+                    newBlock.style.color = 'rgb(16, 86, 83)';
+                    newBlock.style.padding= `${padding}px`;
+                    newBlock.style.fontSize = `${fontSize}px`;
+                    newBlock.style.textAlign = 'center';
+                    newBlock.textContent = i; //текст круга
+                    // Добавляем круг в контейнер main
+                    main.appendChild(newBlock);
+                }
+            }
         </script>
         <style>
             button {
@@ -91,6 +117,8 @@
             <button onclick="addNewBlocks()" style="margin-right: 25px;">Добавить блоки</button>
 
             <button onclick="add20_50()">20=>50</button>
+
+            <button onclick="add10_80()">10=>-80</button>
         </main>
         <footer>
             <hr>
