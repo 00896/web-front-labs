@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кобзева Лидия Викторовна. Лабораторная 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-16x16.png">
+        <script>
+            function showExchange() {
+                const exchange = [
+                    92.2914, 92.5254, 92.3892, 92.3058, 92.4155, 92.5810,
+                    92.7463, 93.2198, 93.7196, 93.4419
+                ];
+
+                const table = document.getElementById('dollar-table');
+                for (let i = 0; i < exchange.length; i++) {
+                    let tr = document.createElement('tr');
+                    let td = document.createElement('td');
+                    // Заполним ячейку курсом доллара, заполненную ячейку вставим в строчку, а строчку — в таблицу:
+                    td.innerText = exchange[i];
+                    tr.appendChild(td);
+                    table.appendChild(tr);
+                    td.style.color = 'maroon';
+                }                    
+                // Среднее значение
+                let sum = 0;
+                for (let i = 0; i < exchange.length; i++) {
+                    sum += exchange[i];
+                }
+                let average = sum / exchange.length;
+                average = average.toFixed(2); //c двумя знаками после запятой
+    
+                // Вывод среднего значения в блок detail
+                document.getElementById('detail').innerText = `Среднее значение: ${average}`;
+                detail.style.color = 'maroon';
+    
+                // Скрытие кнопки после нажатия
+                document.getElementById('key').style.display = 'none';
+            }
+        </script>
+        <style>
+            #key{
+                margin: 10px;
+                background-color: rgb(255, 184, 156); 
+                color: maroon;
+                font-size: 16px;
+                border: solid 3px maroon;
+                height: 40px;
+                width: 150px;
+                border-radius: 10px;
+            }
+            #key:hover{
+                box-shadow: 2px 2px 10px rgba(255, 177, 146, 0.664);
+            }
+        
+            table, th, td {
+                border: 1px solid lightsalmon;
+                font-size: 20px;
+            }
+            #detail{
+                font-size: 20px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 7
+            <hr>
+        </header>
+
+        <main>
+            <button onclick="showExchange()" id="key">Курс доллара</button>
+            <table border="1" id="dollar-table"></table>
+            <div id="detail"></div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
+        </footer>
+    </body>
+</html>
