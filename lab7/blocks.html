@@ -45,6 +45,25 @@
                     /*переменную для блока - newBlock*/
                 }
             }
+
+            function add20_50() {
+                let main = document.querySelector('main');
+                let width = 100;
+                for(let i = 20; i<=50; i+=2.5){
+                    let newBlock = document.createElement('div');
+                    newBlock.style.background = 'rgba(137, 228, 224, 0.778)';
+                    newBlock.style.height = '40px';
+                    newBlock.style.border = 'solid 3px rgba(32, 178, 171, 0.778)';
+                    newBlock.style.width = `${width}px`; // установка ширины блока
+                    newBlock.style.margin = '10px';
+                    newBlock.style.pudding = '4px';
+                    newBlock.style.borderRadius = '7px';
+                    newBlock.style.textAlign = 'center';
+                    newBlock.style.color = 'rgb(16, 86, 83)';
+                    newBlock.innerHTML = `${i}`;
+                    main.appendChild(newBlock);
+                }
+            }
         </script>
         <style>
             button {
@@ -70,6 +89,8 @@
 
             <span style="margin-left: 25px;">Количество блоков: <input type="number" id="numBlock" value="10"></span>
             <button onclick="addNewBlocks()" style="margin-right: 25px;">Добавить блоки</button>
+
+            <button onclick="add20_50()">20=>50</button>
         </main>
         <footer>
             <hr>
