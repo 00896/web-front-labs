@@ -111,6 +111,25 @@
                     main.appendChild(newBlock);
                 }
             }
+
+            function coloredCircles() {
+                let main = document.querySelector('main');
+                let circleCountInput = document.getElementById('circleCount');
+                let circleCount = parseInt(circleCountInput.value); // количество кругов из поля ввода
+                for (let i = circleCount; i > 0; i--) {
+                    let newCircle = document.createElement('div');
+                    newCircle.classList.add('circle');
+                    // цвет в зависимости от четности круга
+                    if (i % 2 === 0) {
+                        newCircle.style.backgroundColor = 'lightgreen';
+                    } 
+                    else {
+                        newCircle.style.backgroundColor = 'lightpink';  
+                    }
+                    newCircle.textContent = i; // текст в круге
+                    main.appendChild(newCircle);
+                }    
+            }
         </script>
         <style>
             button {
@@ -122,6 +141,17 @@
                 height: 50px;
                 width: 150px;
                 border-radius: 10px;
+            }
+
+            .circle {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: inline-block;
+                margin-right: 10px;
+                text-align: center;
+                line-height: 50px;
+                color: maroon;
             }
         </style>
     </head>
@@ -136,13 +166,17 @@
 
             <span style="margin-left: 25px;">Количество блоков: <input type="number" id="numBlock" value="10"></span>
             <button onclick="addNewBlocks()" style="margin-right: 25px;">Добавить блоки</button>
-
-            <button onclick="add20_50()">20=>50</button>
+            <br>
+            <button onclick="add20_50()" style="margin-right: 100px; margin-left: 140px;">20=>50</button>
 
             <button onclick="add10_80()">10=>-80</button>
-
+            <br>
             <button onclick="addOpacityBlocks()">Opacity</button>
+            <span style="margin-left: 25px;">Количество кругов: <input type="number" id="circleCount" value="15"></span>
+            <button onclick="coloredCircles()">ColorC</button>
+            <br>
         </main>
+
         <footer>
             <hr>
             &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
