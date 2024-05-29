@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кобзева Лидия Викторовна. Лабораторная 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-16x16.png">
+        <script>
+            // Массивы дат и цен акций
+            const dates = ['15.05.2024', '16.05.2024', '17.05.2024', '20.05.2024', '21.05.2024', 
+            '22.05.2024', '23.05.2024', '24.05.2024', '27.05.2024', '28.05.2024'];
+            const prices = [0.3640, 0.3599, 0.3612, 0.3620, 0.3569, 0.3602, 0.3595, 0.3568, 0.3474, 0.3429];
+        
+            // Функция для вывода таблицы с данными
+            function showStockTable() {
+                const table = document.getElementById('stock-table');
+                const tbody = table.getElementsByTagName('tbody')[0];
+                const statsDiv = document.getElementById('stock-stats');
+                const avgPrice = document.getElementById('avg-price');
+                const minPrice = document.getElementById('min-price');
+                const maxPrice = document.getElementById('max-price');
+            
+                tbody.innerHTML = '';
+            
+                let sum = 0;
+                let minValue = Infinity;
+                let maxValue = -Infinity;
+            
+                for (let i = 0; i < dates.length; i++) {
+                    const row = document.createElement('tr');
+            
+                    // Создаем ячейки для даты, цены и разницы
+                    const dateCell = document.createElement('td');
+                    dateCell.textContent = dates[i];
+                    const priceCell = document.createElement('td');
+                    priceCell.textContent = prices[i].toFixed(2);
+                    const diffCell = document.createElement('td');
+            
+                    // Вычисляем разницу, кроме первого дня
+                    if (i > 0) {
+                        const diff = prices[i] - prices[i - 1];
+                        diffCell.textContent = diff.toFixed(2);
+                    } 
+                    else {
+                        diffCell.textContent = '-';
+                    }
+            
+                    row.appendChild(dateCell);
+                    row.appendChild(priceCell);
+                    row.appendChild(diffCell);
+                    tbody.appendChild(row);
+            
+                    // Обновляем статистику
+                    sum += prices[i];
+                    minValue = Math.min(minValue, prices[i]);
+                    maxValue = Math.max(maxValue, prices[i]);
+                }
+            
+                // Вычисляем и отображаем статистику
+                const avgPriceValue = (sum / dates.length).toFixed(2);
+                avgPrice.textContent = avgPriceValue;
+                minPrice.textContent = minValue.toFixed(2);
+                maxPrice.textContent = maxValue.toFixed(2);
+            
+                table.style.display = 'table';
+                statsDiv.style.display = 'block';
+            }
+        
+            // Добавляем обработчик клика на кнопку
+            const stockBtn = document.getElementById('stock-btn');
+            stockBtn.addEventListener('click', showStockTable);
+        </script>
+        <style>
+            #stock-btn{
+                margin: 10px;
+                background-color: rgb(255, 184, 156); 
+                color: maroon;
+                font-size: 16px;
+                border: solid 3px maroon;
+                height: 40px;
+                width: 150px;
+                border-radius: 10px;
+            }
+
+            #stock-btn:hover{
+                box-shadow: 2px 2px 10px rgba(255, 177, 146, 0.664);
+            }
+        
+            table, th, td {
+                border: 1px solid lightsalmon;
+                font-size: 20px;
+                width: 500px;
+            }
+            #detail{
+                font-size: 20px;
+                font-weight: bold;
+            }
+            #stock-stats{
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 7
+            <hr>
+        </header>
+
+        <main>
+            <button onclick="showStockTable()" id="stock-btn">Акции Россети</button>
+            <table border="1" id="stock-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Цена акций</th>
+                        <th>Разница</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            
+            <div id="stock-stats" style="display: none;">
+                <p>Среднее значение: <span id="avg-price"></span></p>
+                <p>Минимальное значение: <span id="min-price"></span></p>
+                <p>Максимальное значение: <span id="max-price"></span></p>
+            </div>
+        </main>
+        <footer>
+            <hr>
+            &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
+        </footer>
+    </body>
+</html>
