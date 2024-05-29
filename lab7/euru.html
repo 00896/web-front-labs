@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кобзева Лидия Викторовна. Лабораторная 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-16x16.png">
+        <script>
+            function getEuroRate() {
+                const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+                fetch(url)
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function(data) {
+                        //  данные о курсе евро
+                        const euroData = data.Valute.EUR;
+
+                        // дата запроса
+                        const currentDate = new Date(data.Date);
+                        const requestDate = currentDate.toLocaleDateString();
+
+                        // текущий курс евро
+                        const currentRate = euroData.Value.toFixed(2);
+
+                        // курс за прошлую дату
+                        const previousRate = euroData.Previous.toFixed(2);
+
+                        // разница между текущим и предыдущим курсом
+                        const difference = (euroData.Value - euroData.Previous).toFixed(2);
+
+                        // сообщение о повышении или понижении курса
+                        let trendMessage;
+                        if (euroData.Value > euroData.Previous) {
+                            trendMessage = '↑';
+                        } else if (euroData.Value < euroData.Previous) {
+                            trendMessage = '↓';
+                        } else {
+                            trendMessage = 'Курс остался неизменным';
+                        }
+                        //  сообщение для вывода на страницу
+                        const message = `
+                        
+                            <div class="exchangeRate">
+                                <div class="container2">
+                                    <div class="Tcurs"> 
+                                        <div class="Tcurs1">Текущий курс евро:</div>
+                                        <div class="Tcurs2">${currentRate} ${trendMessage}</div>
+                                    </div>
+                                    <div class="Pcurs">   
+                                        <div class="Pcurs1">Курс за прошлую дату:</div>
+                                        <div class="Pcurs2">${previousRate}</div>
+                                    </div>
+                                </div>
+                                <div class="container1">
+                                    <div class="data">    
+                                        <div class="data1">Дата запроса:</div>
+                                        <div class="data2">${requestDate}</div>
+                                    </div>
+                                    <div class="Istochnik">       
+                                        <div class="Istochnik1">Источник данных:</div>
+                                        <div class="Istochnik2"><a href="https://www.cbr-xml-daily.ru/">Курсы валют, API</a></div>
+                                    </div>
+                                    <div class="raz">
+                                        <div class="raz1">Разница:</div>
+                                        <div class="raz2">${difference}</div>
+                                    </<div>
+                                </div>
+                            </div>
+                        `;
+
+                        // сообщение на страницу
+                        document.getElementById('euro-rate-info').innerHTML = message;
+                        document.getElementById('get-rate-button').style.display = 'none';
+                    })
+                    .catch(function(error) {
+                        console.log('Ошибка при получении данных:', error);
+                    });
+            }
+        </script>
+        <style>
+            #get-rate-button{
+                margin: 10px;
+                background-color: rgb(255, 184, 156); 
+                color: maroon;
+                font-size: 16px;
+                border: solid 3px maroon;
+                height: 50px;
+                width: 200px;
+                border-radius: 10px;
+            }
+
+            .exchangeRate{
+                margin: 20px;
+                font-size: 20px;
+            }
+
+            .Tcurs1, .Pcurs1, .data1, .Istochnik1, .raz1 {
+                color: rgb(94, 0, 0);
+                font-size: 22px;
+                font-weight: bold;
+            }
+            
+            .Tcurs2, .Pcurs2, .data2, .Istochnik2, .raz2 {
+                margin-bottom: 15px;
+                margin-left: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 7
+            <hr>
+        </header>
+
+        <main>
+            <div id="euro-rate-info"></div>
+            <button id="get-rate-button" onclick="getEuroRate()">Получить курс евро</button>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
+        </footer>
+    </body>
+</html>
