@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кобзева Лидия Викторовна. Лабораторная 7</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-16x16.png">
+        <script>
+            async function getWeather() {
+                const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok';
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    const temperatures = data.hourly.temperature_2m;
+                    const times = data.hourly.time;
+
+                    const today = new Date().toISOString().split('T')[0];
+
+                    const temp8am = getTemperatureAtTime(today, '08:00', times, temperatures);
+                    const temp12pm = getTemperatureAtTime(today, '12:00', times, temperatures);
+                    const temp8pm = getTemperatureAtTime(today, '20:00', times, temperatures);
+
+                    document.getElementById('temperature-8am').innerText = `${temp8am} °C`;
+                    document.getElementById('temperature-12pm').innerText = `${temp12pm} °C`;
+                    document.getElementById('temperature-8pm').innerText = `${temp8pm} °C`;
+                } catch (error) {
+                    console.error('Ошибка получения данных:', error);
+                }
+            }
+            function getTemperatureAtTime(date, time, times, temperatures) {
+                const dateTime = `${date}T${time}`;
+                const index = times.indexOf(dateTime);
+                return index !== -1 ? temperatures[index] : 'Нет данных';
+            }
+            getWeather();
+        </script>
+        <style>
+            .weather-container{
+                margin: 25px 25px 10px 170px;
+                background-color: rgb(255, 236, 228);
+                color: maroon;
+                font-size: 20px;
+                border: solid 3px maroon;
+                height: 200px;
+                width: 200px;
+                border-radius: 10px;
+            }
+            h1{
+                margin: 25px 25px 5px 90px;
+            }
+
+            .time {
+                color: rgb(94, 0, 0);
+                font-size: 22px;
+                font-weight: bold;
+                margin: 10px 0px 0px 20px;
+            }
+            
+            .temperature{
+                margin-bottom: 15px;
+                margin-left: 110px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 7
+            <hr>
+        </header>
+
+        <main>
+            <h1>Погода в Новосибирске</h1>
+            <div class="weather-container">
+                <div id="block-8am" class="weather-block ">
+                    <div class="time">8:00 утра - </div>
+                    <div class="temperature" id="temperature-8am">Загрузка...</div>
+                </div>
+                <div id="block-12pm" class="weather-block ">
+                    <div class="time">12:00 дня - </div>
+                    <div class="temperature" id="temperature-12pm">Загрузка...</div>
+                </div>
+                <div id="block-8pm" class="weather-block ">
+                    <div class="time">20:00 вечера - </div>
+                    <div class="temperature" id="temperature-8pm">Загрузка...</div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <hr>
+            &copy; Кобзева Лидия, ФБИ-21, 2 курс, 2024
+        </footer>
+    </body>
+</html>
