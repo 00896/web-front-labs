@@ -21,7 +21,19 @@
                 border-radius: 5px;
             }
 
-            #current-date{display: inline-block;}
+            #current-date {display: inline-block;}
+            #day, #month, #year {display: inline-block; margin: 10px;}
+
+            button{
+                margin: 10px 10px 10px 270px;
+                background-color: rgb(255, 169, 156); 
+                color: maroon;
+                font-size: 16px;
+                border: solid 3px maroon;
+                height: 50px;
+                width: 150px;
+                border-radius: 10px;
+            }
         </style>
     </head>
     <body onload="showDate()"> 
@@ -33,6 +45,25 @@
         <main>
             <div class="text">
                 <div id="current-date"></div>
+            </div>
+
+            <div class="text">
+                <h3 style="text-align: center;">Сегодня</h3>
+                <div id="currentInfo"></div>
+            </div>
+
+            <div class="text">
+                <h3 style="text-align: center;">День недели</h3>
+                <form id="dateForm">
+                    <label for="day">День:</label>
+                    <input type="number" id="day" min="1" max="31" required><br>
+                    <label for="month">Месяц:</label>
+                    <input type="number" id="month" min="1" max="12" required><br>
+                    <label for="year">Год:</label>
+                    <input type="number" id="year" min="1000" required><br>
+                    <button type="button" onclick="getDayOfWeek()">День недели</button>
+                </form>
+                <div id="result"></div>
             </div>
         </main>
 
