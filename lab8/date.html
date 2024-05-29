@@ -8,19 +8,32 @@
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="../favicon-32x32.png">
         <link rel="icon" href="../favicon-16x16.png">
+        <script src="lab8.js"></script>
+        <style>
+            .text{
+                font-size: 20px;
+                background-color: rgb(239, 203, 189);
+                height: auto;
+                width: 700px;
+                margin: 20px auto;
+                padding: 20px;
+                border: solid 3px rgb(255, 184, 156);
+                border-radius: 5px;
+            }
+
+            #current-date{display: inline-block;}
+        </style>
     </head>
-    <body>
+    <body onload="showDate()"> 
         <header>
             НГТУ, ФБ, Лабораторная работа 8
             <hr>
         </header>
 
         <main>
-            <ul>
-                <li>
-                    <a href="date.html">Дата</a>
-                </li>
-            </ul>
+            <div class="text">
+                <div id="current-date"></div>
+            </div>
         </main>
 
         <footer>
