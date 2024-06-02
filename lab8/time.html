@@ -10,17 +10,74 @@
         <link rel="icon" href="../favicon-16x16.png">
         <script src="time.js"></script>
         <style>
-            .text{
+            #time{
                 font-size: 20px;
                 background-color: rgb(239, 203, 189);
                 height: auto;
-                width: 250px;
+                width: 200px;
                 margin: 20px auto;
                 padding: 20px;
                 border: solid 3px rgb(255, 184, 156);
                 border-radius: 5px;
                 text-align: center;
             }
+            #clock{ 
+                width: 30vw; 
+                height: 30vw; 
+                background-color: rgb(239, 203, 189);
+                border: solid 3px rgb(255, 184, 156);
+                background-size: cover; 
+                border-radius: 50%; 
+                position: relative; 
+            }
+            
+            .marg{
+                margin-right: 450px;
+                margin-left: 90px;
+                margin-top: 0px;
+            }
+
+            .hr, 
+            .min, 
+            .sec { 
+                width: 1%; 
+                position: absolute; 
+                left: 50%; 
+                top: 50%;
+                transform: translate(-50%, -100%); 
+                transform-origin: bottom; 
+                z-index: 2; 
+                border-radius: 2em; 
+            }
+
+            .hr { 
+                height: 35%; 
+                background-color: lightsalmon; 
+            } 
+
+            .min { 
+                height: 40%; 
+                background-color: lightsalmon; 
+            } 
+
+            .sec { 
+                height: 50%; 
+                background-color: maroon; 
+                transform-origin: 50% 85%; 
+            } 
+
+            .menuclock {
+                height: auto;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                margin-bottom: 200px;
+                margin-left: 360px;
+                margin-right: 400px;
+                text-align: center;
+            }
+
         </style>
     </head>
     <body onload="showTime()">
@@ -29,16 +86,17 @@
             <hr>
         </header>
 
-        <main>
-            <div class="text">
-                <h3>Текущее время</h3>
-                <div id="time">00:00:00</div>
-                <div> 
-                    <div class="hr"></div> 
-                    <div class="min"></div> 
-                    <div class="sec"></div> 
-                    <div class="pin"></div> 
-                </div>
+        <main style="padding:20px">
+            <div class="menuclock">
+                    <div id="time">00:00:00</div>
+                    <div class="marg">
+                        <div id="clock"> 
+                            <div class="hr"></div> 
+                            <div class="min"></div> 
+                            <div class="sec"></div> 
+                            <div class="pin"></div> 
+                        </div> 
+                    </div>
             </div>
         </main>
 
