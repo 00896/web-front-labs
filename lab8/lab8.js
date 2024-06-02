@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // информация о текущем годе, месяце, дате и дне недели
     const year = currentDate.getFullYear();
-    const month = currentDate.toLocaleString('default', { month: 'long' });
+    const month = currentDate.toLocaleString('default', { month: 'long' }); // указывается, что нужно получить полное название месяца
     const date = currentDate.getDate();
     const dayOfWeek = currentDate.toLocaleString('default', { weekday: 'long' });
 
@@ -32,10 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
     document.getElementById('currentInfo').innerHTML = currentInfoString;
 });
-
-
-
-
 
 function getDayOfWeek() {
     var day = parseInt(document.getElementById("day").value);
