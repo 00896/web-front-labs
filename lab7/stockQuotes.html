@@ -67,8 +67,9 @@
             
                 table.style.display = 'table';
                 statsDiv.style.display = 'block';
+                document.getElementById('stock-btn').style.display = 'none';
             }
-        
+
             // Добавляем обработчик клика на кнопку
             const stockBtn = document.getElementById('stock-btn');
             stockBtn.addEventListener('click', showStockTable);
